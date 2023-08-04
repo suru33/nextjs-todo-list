@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  todo-db:
+    image: postgres:14.8-alpine
+    container_name: todo-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    expose:
+      - "8732"
+    volumes:
+      - ${PWD}/docker/postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "8732:5432"
